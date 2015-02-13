@@ -1,0 +1,15 @@
+language: go
+
+go:
+- 1.4.1
+
+install:
+  - go get -v -t ./...
+
+script:
+  - go test -v ./...
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZCFsjzLo1l46OT92pzR/liPlkkDWSgzZX0o2pisdodb4Cvx16lKUZUbPudxTH/my86Iy74gpi+9RmqiQvZcvD/VJaDecYLcRSM+WQQrwiR/NFPvaTdC/vVzx+wxsZMYoVgBuFn1nrexHg7qVKiJmg/Ij+R4AkcDySQGQzwOjso4=
