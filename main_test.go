@@ -16,17 +16,17 @@ func TestConvertRelativeDate(t *testing.T) {
 
 	{
 		now := time.Date(2015, time.January, 21, 12, 0, 0, 0, time.Local)
-		assert.Equal("updated:<=2015-01-07", ConvertRelativeDate(now, "updated:within:2w"))
+		assert.Equal("updated:>=2015-01-07", ConvertRelativeDate(now, "updated:within:2w"))
 	}
 
 	{
 		now := time.Date(2015, time.January, 14, 12, 0, 0, 0, time.Local)
-		assert.Equal("updated:<=2015-01-07", ConvertRelativeDate(now, "updated:within:1w"))
+		assert.Equal("updated:>=2015-01-07", ConvertRelativeDate(now, "updated:within:1w"))
 	}
 
 	{
 		now := time.Date(2015, time.January, 8, 12, 0, 0, 0, time.Local)
-		assert.Equal("updated:<=2015-01-01", ConvertRelativeDate(now, "updated:within:1w"))
+		assert.Equal("updated:>=2015-01-01", ConvertRelativeDate(now, "updated:within:1w"))
 	}
 }
 
@@ -57,7 +57,7 @@ func TestHandleGet(t *testing.T) {
 		assert.True(
 			strings.HasPrefix(
 				rr.Header().Get("Location"),
-				githubURL+"/nabeken/github-issues-dater/issues?q=is%3Aissue+is%3Aopen+updated%3A%3C%3D",
+				githubURL+"/nabeken/github-issues-dater/issues?q=is%3Aissue+is%3Aopen+updated%3A%3E%3D",
 			),
 		)
 	})

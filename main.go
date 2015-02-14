@@ -68,7 +68,7 @@ func ConvertRelativeDate(now time.Time, rd string) string {
 	switch unit {
 	case "w":
 		year, month, day := now.AddDate(0, 0, -7*num).Date()
-		return fmt.Sprintf("updated:<=%d-%0.2d-%0.2d", year, month, day)
+		return fmt.Sprintf("updated:>=%d-%0.2d-%0.2d", year, month, day)
 	}
 	return rd
 }
