@@ -32,7 +32,7 @@ func HandleGet(w http.ResponseWriter, req *http.Request) {
 	q := make([]string, len(fields))
 	for i, qv := range strings.Fields(v.Get("q")) {
 		if strings.HasPrefix(qv, "updated:") {
-			q[i] = ConvertRelativeDate(time.Now(), qv[len("updated:"):])
+			q[i] = ConvertRelativeDate(time.Now(), qv)
 		} else {
 			q[i] = qv
 		}
@@ -50,11 +50,11 @@ func HandleGet(w http.ResponseWriter, req *http.Request) {
 
 func ConvertRelativeDate(now time.Time, rd string) string {
 	// return as-is
-	if !strings.HasPrefix(rd, "within:") {
+	if !strings.HasPrefix(rd, "updated:within:") {
 		return rd
 	}
 
-	matches := updatedRegxp.FindStringSubmatch(rd[len("within:"):])
+	matches := updatedRegxp.FindStringSubmatch(rd[len("updated:within:"):])
 	if len(matches) < 3 {
 		return rd
 	}
