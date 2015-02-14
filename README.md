@@ -2,7 +2,7 @@
 
 Github Issues has search syntax.
 For example, we can query issues that is updated within a week like this:
-`is:issue is:open updated:2015-02-07..2015-02-14` (Today is 2015-02-14)
+`is:issue is:open updated:>=2015-02-07` (Today is 2015-02-14)
 
 You must build a date range for updated manually.
 
@@ -14,8 +14,4 @@ Use `http://github-issues-dater.herokuapp.com` instead of `https://github.com`.
 
 For example, if you want to query issues updated within a week:
 
-https://github.com/GoogleCloudPlatform/kubernetes/issues?q=is%3Aissue+is%3Aopen+updated%3A2015-02-07..2015-02-14
-
-will be
-
-http://github-issues-dater.herokuapp.com/GoogleCloudPlatform/kubernetes/issues?q=is%3Aissue+is%3Aopen+updated%3A1w
+https://github-issues-dater.herokuapp.com/GoogleCloudPlatform/kubernetes/issues?q=is%3Aissue+is%3Aopen+updated%3Awithin%3A1w
