@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -73,4 +74,12 @@ func ConvertRelativeDate(now time.Time, rd string) string {
 }
 
 func main() {
+	r := mux.NewRouter()
+	Bind(r)
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+	http.ListenAndServe(":"+port, r)
 }
