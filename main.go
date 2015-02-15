@@ -18,6 +18,7 @@ const githubURL = "https://github.com"
 
 func Bind(r *mux.Router) {
 	r.HandleFunc("/{user}/{repo}/issues", HandleGet).Methods("GET")
+	r.HandleFunc("/{user}/{repo}/pulls", HandleGet).Methods("GET")
 }
 
 func HandleGet(w http.ResponseWriter, req *http.Request) {
